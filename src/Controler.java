@@ -18,9 +18,7 @@ public class Controler implements ActionListener {
     public void actionPerformed(ActionEvent event){
         Button botonAccionado = (Button) event.getSource();
         if (botonAccionado == view.verificarButton) {
-            view.consola.setText(ProjectDeductiveDatabase.cargarAnswerSet());
-
-
+            view.consola.setText(ProjectDeductiveDatabase.preguntados());
         }
     }
 
