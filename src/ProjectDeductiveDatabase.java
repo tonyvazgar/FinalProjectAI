@@ -1,10 +1,7 @@
 import it.unical.mat.dlv.program.Term;
 import it.unical.mat.wrapper.FactResult;
 
-import java.util.List;
-import java.util.Scanner;
-import java.util.StringTokenizer;
-import java.util.Vector;
+import java.util.*;
 
 
 public class ProjectDeductiveDatabase {
@@ -12,15 +9,15 @@ public class ProjectDeductiveDatabase {
 	static DeductiveDatabase database;
 	static Vector<FactResult>  answerSet;
 	static Vector<Dato> datos;
-	static int i;
-	static Dato dato;
-	static Fact fact;
-	static String palabra;
+	static int puntaje;
+	static int errores;
+	static String respuestaCorrecta;
 	static Vector<String> historia;
 	static Vector<String> general;
 	static Vector<String> musica;
 	static Vector<String> ciencia;
 	static Vector<String> preguntados;
+    static Vector<String> respuestas;
 
 	public static Vector<Dato> getDatos(Vector<FactResult>  answerSet) {
 		Vector<Dato> datos;
@@ -63,12 +60,6 @@ public class ProjectDeductiveDatabase {
 		database.load("./preguntados.txt");
 		answerSet = database.getAnswerSet();
 	}
-
-	public static String cargarAnswerSet(){
-		cargarArchivos();
-		return database.showInConsole();
-	}
-
 	public static String cargarPreguntasMusica(){
 		cargarArchivos();
 		musica = new Vector<String>();
@@ -91,7 +82,6 @@ public class ProjectDeductiveDatabase {
 		}
 		return ciencia.toString();
 	}
-
 	public static String cargarPreguntasGeneral(){
 		cargarArchivos();
 		general = new Vector<String>();
@@ -103,7 +93,6 @@ public class ProjectDeductiveDatabase {
 		}
 		return general.toString();
 	}
-
 	public static String cargarPreguntasHistoria(){
 		cargarArchivos();
 		historia = new Vector<String>();
@@ -116,8 +105,33 @@ public class ProjectDeductiveDatabase {
 		return historia.toString();
 	}
 
+	public static String cargarRespuestaPregunta(String pregunta){
+        cargarArchivos();
+        datos = getDatos(answerSet);
+        String respuestaCor = "";
+        String respuesta = "";
+        String tema = "";
+        respuestas = new Vector<String>();
+        for(Dato elDato: datos){
+            if(elDato.getPredicate().equals("pregunta")) {
+                if(elDato.getArgument(1).replace("\"","").equals(pregunta)) {
+                    tema = elDato.getArgument(0);
+                    respuestaCorrecta = elDato.getArgument(2).replace("\"","");
+                }
+            }
+        }
+        for(Dato elDato: datos){
+            if(elDato.getPredicate().equals("pregunta") && elDato.getArgument(0).equals(tema)){
+                respuestas.add(elDato.getArgument(2).replace("\"",""));
+            }
+        }
+        for(int i = 0; i < respuestas.size(); i++){
+            respuesta += respuestas.get(i);
+        }
+	    return "\nEscribe abajo una de las siguientes respuestas:\n" + respuesta;
+    }
 
-	public static String preguntados(){
+	public static String preguntadosPreguntas(){
 		preguntados = new Vector<String>();
 		cargarPreguntasHistoria();
 		cargarPreguntasGeneral();
@@ -137,7 +151,24 @@ public class ProjectDeductiveDatabase {
 			preguntados.add(ciencia.get(i));
 		}
 		int randomQuestion = (int) (Math.random() * preguntados.size()-1) + 1;
-		return "PREGUNTA: \n\n" + preguntados.get(randomQuestion);
+		//String pregunta = "PREGUNTA: \n\n" + preguntados.get(randomQuestion);
+        String pregunta = preguntados.get(randomQuestion).replace("\"","");
+
+        cargarRespuestaPregunta(pregunta);
+
+        return pregunta;
 	}
 
+
+    public static void checarRespuesta(String respuesta) {
+	    System.out.println("CORRECTA --> " + respuestaCorrecta);
+	    System.out.println(respuesta);
+	    if(respuestaCorrecta.equals(respuesta)){
+	        System.out.println("Correcto");
+	        puntaje = puntaje + 1;
+        }else{
+	        System.out.println("Incorrecto");
+	        errores = errores + 1;
+        }
+    }
 }//end ProjectDeductiveDatabase
