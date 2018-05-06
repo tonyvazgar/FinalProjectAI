@@ -7,6 +7,10 @@ pregunta(historia, "¿De que color era el caballo blanco de Napoleon?", "Blanco"
 pregunta(historia, "¿En qué año se suicidó Van Gogh?", "1890").
 pregunta(historia, "¿Quién escribió La Divina Comedia?", "Dante Alighieri").
 pregunta(historia, "¿Cuál es la famosa cueva que se narra el Quijote?", "Montesinos").
+pregunta(historia, "¿A qué representan las K de un juego de naipes?", "A los cuatro grandes reyes").
+pregunta(historia, "¿Cuál es la ideología opositora del Comunismo?", "Capitalismo").
+pregunta(historia, "¿En la antigua Grecia, como participaban en los juegos olímpicos?", "Desnudos").
+pregunta(historia, "¿En qué año Francia se convirtió en República?", "1792").
 pregunta(general,"¿Cuantos años tiene Miley Cyrus?", "25").
 pregunta(general, "¿Según el cuento de El principito cuál fue el séptimo planeta que visitó?", "Tierra").
 pregunta(general, "¿Qué tendencia musical es la que más incursiona en Jamaica?", "Reggae").
@@ -15,11 +19,18 @@ pregunta(general, "¿Quién escribió El Diario de Ana Frank?", "Ana Frank").
 pregunta(general, "¿Quién escribió 100 años de Soledad?", "Gabriel García Márquez").
 pregunta(general, "¿Cuál es el deporte nacional de Japón?", "Sumo").
 pregunta(general, "¿Qué es manga en Japón?", "Cómic").
+pregunta(general, "¿Cuántas vertebras forman la columna vertebral humana?", "33").
 pregunta(musica, "¿Cuántas cuerdas suele tener un bajo eléctrico?", "4").
 pregunta(musica, "¿Nombre del compositor de música clásica que era zurdo?", "Beethoven").
 pregunta(musica, "¿Qué nota musical hay entre re y fa?", "Mi").
+pregunta(musica, "¿Cuántos discos de estudio hizo Queen con Freddie Mercury?", "16").
+pregunta(musica, "¿Quién es la artista más joven en ganar un premio Country?", "Taylor Swift").
 pregunta(ciencia, "¿Qué parte del cuerpo tiene 27 huesos y 35 músculos?", "Mano").
 pregunta(ciencia, "¿Quién formuló la teoría de la relatividad general?", "Albert Einstein").
+pregunta(ciencia, "¿Qué órgano es el encargado de fabricar insulina?", "Páncreas").
+pregunta(ciencia, "¿Quién fue el Inventor de la dinamita?", "Alfred Nobel").
+pregunta(ciencia, "¿Quién postuló la ley del principio de inercia?", "Isaac Newton").
+
 
 
 %%%%%%%%%%%%%%%%%%%

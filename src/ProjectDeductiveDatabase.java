@@ -9,15 +9,15 @@ public class ProjectDeductiveDatabase {
 	static DeductiveDatabase database;
 	static Vector<FactResult>  answerSet;
 	static Vector<Dato> datos;
-	static int puntaje;
-	static int errores;
-	static String respuestaCorrecta;
 	static Vector<String> historia;
 	static Vector<String> general;
 	static Vector<String> musica;
 	static Vector<String> ciencia;
 	static Vector<String> preguntados;
-    static Vector<String> respuestas;
+	static Vector<String> respuestas;
+	static int puntaje;
+	static int errores;
+	static String respuestaCorrecta;
 
 	public static Vector<Dato> getDatos(Vector<FactResult>  answerSet) {
 		Vector<Dato> datos;
@@ -151,8 +151,7 @@ public class ProjectDeductiveDatabase {
 			preguntados.add(ciencia.get(i));
 		}
 		int randomQuestion = (int) (Math.random() * preguntados.size()-1) + 1;
-		//String pregunta = "PREGUNTA: \n\n" + preguntados.get(randomQuestion);
-        String pregunta = preguntados.get(randomQuestion).replace("\"","");
+		String pregunta = preguntados.get(randomQuestion).replace("\"","");
 
         cargarRespuestaPregunta(pregunta);
 
