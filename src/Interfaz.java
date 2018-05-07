@@ -19,13 +19,12 @@ public class Interfaz extends Frame{
     Font tipografia = new Font("Helvetica", Font.PLAIN, 14);
 
     Button iniciar;
-    Button verificarButton;
     Button siguiente;
     public JComboBox respuestas;
 
     Label consola;
     Label verificarLabel;
-    Label puntosLabel, puntos, erroresLabel, errores;
+    Label puntosLabel, puntos, erroresLabel, errores, informacion;
 
     /* ---------------------------------------------- *
      *            Constructor de la clase             *
@@ -53,24 +52,22 @@ public class Interfaz extends Frame{
 
     private void ponerBotones(){
         iniciar = new Button("Iniciar juego");
-        verificarButton = new Button("Confirmar respuesta");
-        siguiente = new Button("Otra pregunta");
+        siguiente = new Button("Siguiente pregunta");
         respuestas = new JComboBox();
         verificarLabel = new Label("Ingresa una respuesta de arriba: ");
         puntosLabel = new Label("Puntos: ");
         puntos = new Label("0");
         erroresLabel = new Label("Errores: ");
         errores = new Label("0");
+        informacion =  new Label("Seleccione la respuesta correcta: ");
 
 
         respuestas.setBounds(150,140,210,30);
         add(respuestas);
-        siguiente.setBounds(280,190,150,20);
+        siguiente.setBounds(180,190,150,20);
         add(siguiente);
-        verificarButton.setBounds(100, 190, 150, 20);
-        verificarButton.setFont(tipografia);
-        add(verificarButton);
-
+        informacion.setBounds(100, 70, 240,20);
+        add(informacion);
         puntosLabel.setBounds(30,260,60,20);
         add(puntosLabel);
         puntos.setBounds(90, 260,100,20);
@@ -102,7 +99,6 @@ public class Interfaz extends Frame{
     }
 
     public void setActionListener(Controler theController) {
-        verificarButton.addActionListener(theController);
         siguiente.addActionListener(theController);
     }
 

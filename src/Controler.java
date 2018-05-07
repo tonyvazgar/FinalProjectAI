@@ -22,12 +22,9 @@ public class Controler implements ActionListener {
 
     public void actionPerformed(ActionEvent event){
         Button botonAccionado = (Button) event.getSource();
-        if (botonAccionado == view.verificarButton) {
-            actualizarMarcadores();
-            ProjectDeductiveDatabase.checarRespuesta(view.respuestas.getItemAt(view.respuestas.getSelectedIndex()).toString());
-        }
         if(botonAccionado == view.siguiente){
             actualizarMarcadores();
+            ProjectDeductiveDatabase.checarRespuesta(view.respuestas.getItemAt(view.respuestas.getSelectedIndex()).toString());
             view.respuestas.removeAllItems();
             view.consola.setText(ProjectDeductiveDatabase.preguntadosPreguntas());
             for(int i = 0; i < ProjectDeductiveDatabase.respuestas.size(); i++){
@@ -41,6 +38,7 @@ public class Controler implements ActionListener {
                 view.setVisible(false);
                 JOptionPane.showMessageDialog(view, "Haz perdido el juego!", "AVISO", JOptionPane.PLAIN_MESSAGE);
             }
+            actualizarMarcadores();
         }
     }
 
