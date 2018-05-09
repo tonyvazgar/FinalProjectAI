@@ -11,7 +11,7 @@ pregunta(historia, "¿A qué representan las K de un juego de naipes?", "A los c
 pregunta(historia, "¿Cuál es la ideología opositora del Comunismo?", "Capitalismo").
 pregunta(historia, "¿En la antigua Grecia, como participaban en los juegos olímpicos?", "Desnudos").
 pregunta(historia, "¿En qué año Francia se convirtió en República?", "1792").
-pregunta(general,"¿Cuantos años tiene Miley Cyrus?", "25").
+pregunta(general, "¿Cuantos años tiene Miley Cyrus?", "25").
 pregunta(general, "¿Según el cuento de El principito cuál fue el séptimo planeta que visitó?", "Tierra").
 pregunta(general, "¿Qué tendencia musical es la que más incursiona en Jamaica?", "Reggae").
 pregunta(general, "¿Quién escribió la novela El Código Da Vinci?", "Dan Brown").
@@ -30,6 +30,13 @@ pregunta(ciencia, "¿Quién formuló la teoría de la relatividad general?", "Al
 pregunta(ciencia, "¿Qué órgano es el encargado de fabricar insulina?", "Páncreas").
 pregunta(ciencia, "¿Quién fue el Inventor de la dinamita?", "Alfred Nobel").
 pregunta(ciencia, "¿Quién postuló la ley del principio de inercia?", "Isaac Newton").
+pregunta(arte, "¿Quién escribió Azazel?", "Isaac Asimov").
+pregunta(arte, "¿En qué isla vivía Otelo?", "Creta").
+pregunta(arte, "¿Quién pintó Mujer mirando por la ventana?", "Salvador Dalí").
+pregunta(arte, "¿Quién escribió Romancero Gitano?", "Federico García Lorca").
+pregunta(arte, "¿Qué tenía Salvador Dalí de característico?", "El bigote").
+pregunta(arte, "¿Qué afición artística tenía Hitler?", "Pintura").
+
 
 
 
@@ -47,11 +54,8 @@ temaCiencia(PREGUNTA):-
 temaHistoria(PREGUNTA):-
 	pregunta(historia, PREGUNTA, _).
 
-temaGeneral(PREGUNTA):-
-	pregunta(_, PREGUNTA, _),
-	not temaMusica(PREGUNTA),
-	not temaCiencia(PREGUNTA),
-	not temaHistoria(PREGUNTA).
+temaArte(PREGUNTA):-
+	pregunta(arte, PREGUNTA, _).
 
 respuestasMusica(Y):-
 	pregunta(_, X, Y),
@@ -68,3 +72,15 @@ respuestasHistoria(Y):-
 respuestasGeneral(Y):-
 	pregunta(_, X, Y),
 	temaGeneral(X).
+
+respuestasArte(Y):-
+	pregunta(_, X, Y),
+	temaArte(X).
+
+
+temaGeneral(PREGUNTA):-
+	pregunta(_, PREGUNTA, _),
+	not temaMusica(PREGUNTA),
+	not temaCiencia(PREGUNTA),
+	not temaHistoria(PREGUNTA),
+	not temaArte(PREGUNTA).

@@ -24,6 +24,7 @@ public class Interfaz extends Frame{
 
     Label consola;
     Label verificarLabel;
+    Label tema, temaLabel;
     Label puntosLabel, puntos, erroresLabel, errores, informacion;
 
     /* ---------------------------------------------- *
@@ -55,6 +56,7 @@ public class Interfaz extends Frame{
         siguiente = new Button("Siguiente pregunta");
         respuestas = new JComboBox();
         verificarLabel = new Label("Ingresa una respuesta de arriba: ");
+        temaLabel = new Label("Categoria: ");
         puntosLabel = new Label("Puntos: ");
         puntos = new Label("0");
         erroresLabel = new Label("Errores: ");
@@ -76,12 +78,17 @@ public class Interfaz extends Frame{
         add(erroresLabel);
         errores.setBounds(450, 260,60,20);
         add(errores);
+        temaLabel.setBounds(100, 220,70,20);
+        add(temaLabel);
     }
 
     private void ponerConsola(){
         consola = new Label();
         consola.setBounds(100, 0, 500, 220);
         add(consola);
+        tema = new Label();
+        tema.setBounds(180, 220, 100,20);
+        add(tema);
     }
 
     public void endProgram() {

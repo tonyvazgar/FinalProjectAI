@@ -15,6 +15,7 @@ public class Controler implements ActionListener {
         this.model = model;
         this.view = view;
         view.consola.setText(ProjectDeductiveDatabase.preguntadosPreguntas());
+        view.tema.setText(ProjectDeductiveDatabase.preguntadosTema());
         for(int i = 0; i < ProjectDeductiveDatabase.respuestas.size(); i++){
             view.respuestas.addItem(ProjectDeductiveDatabase.respuestas.get(i));
         }
@@ -27,6 +28,7 @@ public class Controler implements ActionListener {
             ProjectDeductiveDatabase.checarRespuesta(view.respuestas.getItemAt(view.respuestas.getSelectedIndex()).toString());
             view.respuestas.removeAllItems();
             view.consola.setText(ProjectDeductiveDatabase.preguntadosPreguntas());
+            view.tema.setText(ProjectDeductiveDatabase.preguntadosTema());
             for(int i = 0; i < ProjectDeductiveDatabase.respuestas.size(); i++){
                 view.respuestas.addItem(ProjectDeductiveDatabase.respuestas.get(i));
             }

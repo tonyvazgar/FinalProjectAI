@@ -13,10 +13,12 @@ public class ProjectDeductiveDatabase {
 	static Vector<String> general;
 	static Vector<String> musica;
 	static Vector<String> ciencia;
+	static Vector<String> arte;
 	static Vector<String> preguntados;
 	static Vector<String> respuestas;
 	static int puntaje;
 	static int errores;
+	static String tema = "";
 	static String respuestaCorrecta;
 
 	public static Vector<Dato> getDatos(Vector<FactResult>  answerSet) {
@@ -105,12 +107,24 @@ public class ProjectDeductiveDatabase {
 		return historia.toString();
 	}
 
+	public static String cargarPreguntasArte(){
+		cargarArchivos();
+		arte = new Vector<String>();
+		datos = getDatos(answerSet);
+		for(Dato elDato:datos){
+			if(elDato.getPredicate().equals("temaArte")){
+				arte.add(elDato.getArgument(0));
+			}
+		}
+		return arte.toString();
+	}
+
 	public static String cargarRespuestaPregunta(String pregunta){
         cargarArchivos();
         datos = getDatos(answerSet);
         String respuestaCor = "";
         String respuesta = "";
-        String tema = "";
+        //String tema = "";
         respuestas = new Vector<String>();
         for(Dato elDato: datos){
             if(elDato.getPredicate().equals("pregunta")) {
@@ -137,6 +151,7 @@ public class ProjectDeductiveDatabase {
 		cargarPreguntasGeneral();
 		cargarPreguntasMusica();
 		cargarPreguntasCiencia();
+		cargarPreguntasArte();
 
 		for(int i = 0; i < historia.size(); i++){
 			preguntados.add(historia.get(i));
@@ -150,12 +165,19 @@ public class ProjectDeductiveDatabase {
 		for(int i = 0; i < ciencia.size(); i++){
 			preguntados.add(ciencia.get(i));
 		}
+		for(int i = 0; i < arte.size(); i++){
+			preguntados.add(arte.get(i));
+		}
 		int randomQuestion = (int) (Math.random() * preguntados.size()-1) + 1;
 		String pregunta = preguntados.get(randomQuestion).replace("\"","");
-
+		System.out.println("Preguntas: " + preguntados.size());
         cargarRespuestaPregunta(pregunta);
 
         return pregunta;
+	}
+
+	public static String preguntadosTema(){
+		return tema;
 	}
 
 
