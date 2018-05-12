@@ -35,10 +35,12 @@ public class Controler implements ActionListener {
             if(ProjectDeductiveDatabase.puntaje > 8){
                 view.setVisible(false);
                 JOptionPane.showMessageDialog(view, "Haz ganado la ronda!!", "AVISO", JOptionPane.PLAIN_MESSAGE);
+                System.exit(0);
             }
             if(ProjectDeductiveDatabase.errores > 4){
                 view.setVisible(false);
                 JOptionPane.showMessageDialog(view, "Haz perdido el juego!", "AVISO", JOptionPane.PLAIN_MESSAGE);
+                System.exit(0);
             }
             actualizarMarcadores();
         }

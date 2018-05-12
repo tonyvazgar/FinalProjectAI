@@ -152,8 +152,7 @@ public class ProjectDeductiveDatabase {
 		cargarPreguntasMusica();
 		cargarPreguntasCiencia();
 		cargarPreguntasArte();
-
-		for(int i = 0; i < historia.size(); i++){
+        for(int i = 0; i < historia.size(); i++){
 			preguntados.add(historia.get(i));
 		}
 		for(int i = 0; i < general.size(); i++){
@@ -168,10 +167,11 @@ public class ProjectDeductiveDatabase {
 		for(int i = 0; i < arte.size(); i++){
 			preguntados.add(arte.get(i));
 		}
-		int randomQuestion = (int) (Math.random() * preguntados.size()-1) + 1;
+        System.out.println("Preguntas: " + preguntados.size());
+        int randomQuestion = (int) (Math.random() * preguntados.size()-1) + 1;
 		String pregunta = preguntados.get(randomQuestion).replace("\"","");
-		System.out.println("Preguntas: " + preguntados.size());
-        cargarRespuestaPregunta(pregunta);
+		cargarRespuestaPregunta(pregunta);
+        System.out.println("Pregunta seleccionada: " + randomQuestion);
 
         return pregunta;
 	}
@@ -182,8 +182,8 @@ public class ProjectDeductiveDatabase {
 
 
     public static void checarRespuesta(String respuesta) {
-	    System.out.println("CORRECTA --> " + respuestaCorrecta);
-	    System.out.println(respuesta);
+	    System.out.println("RESPUESTA CORRECTA --> " + respuestaCorrecta);
+	    System.out.println("Respuesta seleccionada: " + respuesta);
 	    if(respuestaCorrecta.equals(respuesta)){
 	        System.out.println("Correcto");
 	        puntaje = puntaje + 1;
